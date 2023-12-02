@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %} Remove Students {% endblock %}
+
+
+{% block content %}
+<h1>Select Students to Remove</h1>
+
+<form method="post" action="{% url 'remove_student' %}">
+    {% csrf_token %}
+    {% for student in students %}
+    <label>
+        <input type="checkbox" name="student_ids" value="{{ student.id }}">
+        {{ student.name }}
+    </label><br>
+    {% endfor %}
+    <input type="submit" value="Remove selected students">
+</form>
+
+<a href="{% url 'home' %}"><button>Cancel</button></a>
+{% endblock %}

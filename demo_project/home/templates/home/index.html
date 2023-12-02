@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% load static %}
+<!DOCTYPE html>
+
+<head>
+    <title>Student Information</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+    <h2>Student Information</h2>
+
+    <a href="{% url 'add_student' %}">
+        <button>Add Student</button>
+    </a>
+
+    {% if students_list %}
+    <ol>
+        {% for student in students_list %}
+        <li> <b>Name:</b> {{student.name}} | <b>Roll:</b> {{student.roll}} </li>
+        {% endfor %}
+    </ol>
+    {% else %}
+    <p>No student information available in the database. </p>
+    {% endif %}
+
+    <div id="student-list"></div>
+
+    <a href="{% url 'remove_student' %}">
+        <button>Remove Students</button>
+    </a>
+
+    <script src="{% static 'js/student_list.js' %}"></script>
+</body>
+
+</html>
+
+<!--
+{% block title %} Student Info {% endblock %}
+
+{% block content %}
+<h2>Student Information</h2>
+
+<a href="{% url 'add_student' %}">
+    <button>Add Student</button>
+</a>
+
+{% if students_list %}
+<ol>
+    {% for student in students_list %}
+    <li> <b>Name:</b> {{student.name}} | <b>Roll:</b> {{student.roll}} </li>
+    {% endfor %}
+</ol>
+{% else %}
+<p>No student information available in the database. </p>
+{% endif %}
+
+<div id="student-list"></div>
+
+<a href="{% url 'remove_student' %}">
+    <button>Remove Students</button>
+</a>
+
+{% endblock %}
+-->
